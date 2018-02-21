@@ -1,0 +1,26 @@
+extends layout
+
+block content
+  section.user_profile
+    img.profile-photo.img-thumbnail.img-fluid(src='../uploads/'+user_profile.img_name)
+    div.user-info
+      p Name: #{user_profile.name}
+      p Nick: #{user_profile.username}
+      p Email: #{user_profile.email}
+      p User since: #{user_profile.register_date.toLocaleDateString('en-EN', {weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'})}
+  if user 
+    if user.id === user_profile.id
+      form.change_picture(action='/users/'+user_profile._id+'/change_picture' method='POST' enctype='multipart/form-data')
+        label.btn.btn-primary Browse
+          input(name='profile_image' type='file' hidden)
+        input.btn.btn-primary.change(type='submit' value='Change')
+      a.nav-link(href='/users/'+user_profile._id+'/settings') Settings
+  hr
+  h4 #{user_profile.name}'s articles:
+  ul.list-group
+    if articles.length
+      each article, i in articles
+        li.list-group-item
+          a(href='/articles/'+article.id)= article.title 
+    else 
+      p #{user_profile.name} has not written any article so far :(

@@ -1,0 +1,41 @@
+extends layout
+
+block content
+  h1= article.title
+  small.date #{article.date.toLocaleDateString('en-EN', {weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'})}
+  p Written by 
+    a.btn.btn-defaul(href='/users/'+article.author) #{author}
+  p= article.body
+  if user
+    if user.id === article.author
+      a.btn.btn-defaul(href='/articles/edit/'+article._id) Edit
+      a.btn.btn-danger.delete-article(href='#', data-id=article._id) Delete
+  br
+  br
+  hr
+  if user
+    form(method='POST', action='/articles/'+article._id+'/add_comment')
+      .form-group
+        label Write your comment:
+        textarea.form-control(name='comment')
+        br
+      input.btn.btn-primary(type='submit', value='Submit')
+  else 
+    p 
+      a.btn.btn-defaul(href='/users/register') Register     
+      span or     
+      a.btn.btn-defaul(href='/users/login')  login      
+      span to add comments.
+  br
+  hr
+  h3 Comments
+  ul.list-group
+    if article.comments.length
+      each comment, i in article.comments
+        li.comment.list-group-item
+          a(href='/users/'+comment.author_id) #{comment.author}
+          small.date #{comment.date.toLocaleDateString('en-EN', {weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'})}
+          hr
+          p #{comment.body}
+    else 
+      p Write first comment in this article!

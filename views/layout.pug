@@ -1,0 +1,42 @@
+doctype html
+html
+  head
+    title Movie database
+    link(rel='stylesheet' href='/bower_components/bootstrap/dist/css/bootstrap.css')
+    link(rel='stylesheet' href='/css/style.css')
+  body
+    nav.navbar.navbar-expand-sm.navbar-dark.bg-dark
+      a.navbar-brand(href='/') Movie's World
+      button.navbar-toggler(type='button', data-toggle='collapse', data-target='#navbarsExample03', aria-controls='navbarsExample03', aria-expanded='false', aria-label='Toggle navigation')
+        span.navbar-toggler-icon
+      #navbarsExample03.collapse.navbar-collapse
+        ul.navbar-nav.mr-auto
+          li.nav-item
+            a.nav-link(href='/') Home
+          if user
+            li.nav-item
+              a.nav-link(href='/articles/add') Add article
+          li.nav-item
+            a.nav-link(href='/users/all') Users
+        ul.navbar-nav.navbar-right
+          if user 
+            li.nav-item
+              a.nav-link(href='/users/logout') Logout
+            li.nav-item
+              a.nav-link(href='/users/'+user._id) #{user.username}
+          else
+            li.nav-item
+              a.nav-link(href='/users/register') Signup
+            li.nav-item
+              a.nav-link(href='/users/login') Login
+    .container
+      br
+      != messages('message', locals)
+      block content
+      br
+      hr
+      footer
+        p Copyright &copy; 2018
+    script(src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js")
+    script(src='/bower_components/bootstrap/dist/js/bootstrap.js')
+    script(src='/js/main.js')

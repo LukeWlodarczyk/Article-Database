@@ -1,0 +1,19 @@
+extends layout
+
+block content
+  form(method='GET', action='/articles/search').form-inline.my-2.my-md-0
+    input.form-control(name='title' type='text', placeholder='Search')
+  h1 #{title}
+  if !user 
+    p 
+      a.btn.btn-defaul(href='/users/register') Register     
+      span or     
+      a.btn.btn-defaul(href='/users/login')  login      
+      span to add articles.
+  ul.list-group
+    if articles.length
+      each article, i in articles
+        li.list-group-item
+          a(href='/articles/'+article.id)= article.title 
+    else 
+      li.list-group-item No article found!

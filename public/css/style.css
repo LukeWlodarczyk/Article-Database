@@ -1,0 +1,48 @@
+.alert-error {
+  color: #a94442;
+  background-color: #f2dede;
+  border-color: #ebccd1;
+}
+
+.date {
+  display: block;
+}
+
+.profile-photo {
+  margin-right: 1em;
+  width: 150px;
+  height: 200px;
+  object-fit: scale-down;
+}
+
+.user_profile {
+  display: -webkit-flex;
+  display: -ms-flex;
+  display: flex;
+  -webkit-flex-flow: row wrap;
+  -ms-flex-flow: row wrap;
+  flex-flow: row wrap;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.messages {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.change {
+  margin: 0 1em;
+  position: relative;
+  top: -3px
+}
+
+.comment {
+  border: 2px solid rgba(210, 216, 255, 0.73);
+  margin: .5em 0;
+}
+
+.change_picture {
+  margin: .5em 0;
+}
