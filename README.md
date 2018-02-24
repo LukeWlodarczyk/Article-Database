@@ -24,3 +24,5 @@ Run app
 ```sh
 $ npm start
 ```
+
+And point your browser to `http://localhost:3001`.
