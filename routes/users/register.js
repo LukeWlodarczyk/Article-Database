@@ -16,7 +16,9 @@ router.post('/register', [
       check('name')
       .not()
       .isEmpty()
-      .withMessage('Name is required'),
+      .withMessage('Name is required')
+      .custom(( value ) => value.length > 1)
+      .withMessage('Name is too short'),
       check('email')
       .not()
       .isEmpty()
@@ -40,7 +42,8 @@ router.post('/register', [
       .not()
       .isEmpty()
       .withMessage('Username is required')
-      // check if username exist
+      .custom(( value ) => value.length > 2)
+      .withMessage('Username is too short')
       .custom((value, {req}) => {
         return new Promise((resolve, reject) => {
           User.findOne({username:req.body.username}, (err, user) =>{
@@ -58,8 +61,9 @@ router.post('/register', [
       check('password')
       .not()
       .isEmpty()
-      .withMessage('Password is required'),
-      // Check Password Confirmation
+      .withMessage('Password is required')
+      .custom(( value ) => value.length > 5)
+      .withMessage('Password is too short'),
       check('password2', 'Passwords do not match')
       .exists()
       .custom((value, { req }) => value === req.body.password)

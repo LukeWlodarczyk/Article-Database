@@ -80,8 +80,9 @@ router.post('/reset/:token',[
   check('password')
   .not()
   .isEmpty()
-  .withMessage('Password is required'),
-  // Check Password Confirmation
+  .withMessage('Password is required')
+  .custom(( value ) => value.length > 5)
+  .withMessage('Password is too short'),
   check('password2')
   .not()
   .isEmpty()
