@@ -81,6 +81,10 @@ router.post('/reset/:token',[
   .not()
   .isEmpty()
   .withMessage('Password is required')
+  .custom(( value ) => /[A-Z]/.test(value))
+  .withMessage('Password should contain at least one capital letter')
+  .custom(( value ) => /[0-9]/.test(value))
+  .withMessage('Password should contain at least one numeric character')
   .custom(( value ) => value.length > 5)
   .withMessage('Password is too short'),
   check('password2')
