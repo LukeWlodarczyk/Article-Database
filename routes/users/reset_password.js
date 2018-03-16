@@ -6,7 +6,6 @@ const nodemailer = require('nodemailer');
 const async = require('async');
 const crypto = require('crypto');
 
-//Bring in Article Model
 let User = require('../../models/user');
 
 

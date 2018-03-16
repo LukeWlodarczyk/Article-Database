@@ -4,7 +4,6 @@ const { check, validationResult } = require('express-validator/check');
 
 const ensureAuthenticated = require('../ensureAuthenticated');
 
-//Article Model
 let Article = require('../../models/article');
 
 //Add route

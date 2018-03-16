@@ -1,9 +1,7 @@
 const express = require('express');
 const router = express.Router();
 
-//Article Model
 let Article = require('../../models/article');
-//User Model
 let User = require('../../models/user');
 
 //Get single article

@@ -1,7 +1,6 @@
 const express = require('express');
 const router = express.Router();
 
-//User Model
 let User = require('../../models/user');
 
 //Search User

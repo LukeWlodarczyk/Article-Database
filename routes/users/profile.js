@@ -4,10 +4,7 @@ const bcrypt = require('bcryptjs');
 const { check, validationResult } = require('express-validator/check');
 const ensureAuthenticated = require('../ensureAuthenticated');
 
-
-//Bring in User Model
 let User = require('../../models/user');
-//Bring in Article Model
 let Article = require('../../models/article');
 
 // User profile

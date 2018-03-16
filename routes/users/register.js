@@ -57,7 +57,6 @@ router.post('/register', [
           });
         });
       }),
-      // Check Password
       check('password')
       .not()
       .isEmpty()

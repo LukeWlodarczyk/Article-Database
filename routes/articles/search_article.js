@@ -1,7 +1,6 @@
 const express = require('express');
 const router = express.Router();
 
-//Article Model
 let Article = require('../../models/article');
 
 //Search article

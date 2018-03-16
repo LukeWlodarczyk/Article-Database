@@ -30,7 +30,7 @@ function checkFileType(file, cb) {
 module.exports = upload = multer({
   storage: storage,
   limits:{fileSize: 1000000},
-  fileFilter: function(req, file, cb) {
+  fileFilter: (req, file, cb) => {
     checkFileType(file, cb)
   }
 }).single('profile_image')
